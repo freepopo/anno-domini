@@ -33,12 +33,14 @@
  * its action called 'display', and we pass a param to select the view file
  * to use (in this case, /app/views/pages/home.thtml)...
  */
+ 
 	Router::connect('/', array('controller' => 'events', 'action' => 'view'));
 	Router::connect('/view/*', array('controller'=>'events','action'=>'view'));
 	Router::connect('/admin',array('controller'=>'events','prefix'=>'admin','action'=>'index'));
 	Router::connect('/admin/login',array('controller'=>'users','prefix'=>'admin','action'=>'login'));
 	Router::connect('/admin/logout',array('controller'=>'users','prefix'=>'admin','action'=>'logout'));
 	Router::connect('/submit',array('controller'=>'users','action'=>'submit'));
+	
 /**
  * ...and connect the rest of 'Pages' controller's urls.
  */

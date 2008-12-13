@@ -13,7 +13,7 @@
 		<!--[if lte IE 6]></td></tr></table></a><![endif]-->
 	</li>
 	<? endforeach; ?>
-	<? if ($session->check('User')): ?>
+	<? if ($session->check('Auth')): ?>
 	<li><a href="<?=$html->url('/admin');?>">Admin<!--[if gte IE 7]><!--></a><!--<![endif]-->
 		<!--[if lte IE 6]><table><tr><td><![endif]-->
 		<ul>

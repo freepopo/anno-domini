@@ -1,19 +1,21 @@
-<?
+<?php
 class EventsController extends AppController {
 	var $name = 'Events';
-	var $components = array('Domini');
+	var $components = array('Auth');
 	
 	function beforeFilter() {
+		$this->Auth->loginAction = array('controller'=>'users','action'=>'login','prefix'=>'admin');
+		$this->Auth->redirectLogin = array('controller'=>'events','action'=>'index','prefix'=>'admin');
+		$this->Auth->allow(array('view'));
 		if ($this->action != 'view') {
 			$this->layout = 'admin';
-			$this->checkAdmin();
 		}
 	}
 	
 	function view($calendar=null,$tag=null,$date=null) {
-		$data = $this->Domini->parseUrl($calendar,$tag,$date);
-		$prev = $this->Domini->findPrev($this->params['pass']);
-		$next = $this->Domini->findNext($this->params['pass']);
+		$data = $this->parseUrl($calendar,$tag,$date);
+		$prev = $this->findPrev($this->params['pass']);
+		$next = $this->findNext($this->params['pass']);
 		$events = $this->Event->findEvents($data);
 		$data['calendar_name'] = $this->requestAction('/calendars/findNameByShortname/'.$calendar);
 		$data['tag_name'] = $this->requestAction('/tags/findNameByShortname/'.$tag);

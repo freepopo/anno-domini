@@ -40,7 +40,7 @@
  * In production mode, flash messages redirect after a time interval.
  * In development mode, you need to click the flash message to continue.
  */
-	Configure::write('debug', 2);
+	Configure::write('debug', 1);
 /**
  * Application wide charset encoding
  */
@@ -109,7 +109,7 @@
  *
  * The table name set here should *not* include any table prefix defined elsewhere.
  */
-	Configure::write('Session.table', 'cake_sessions');
+	Configure::write('Session.table', 'sessions');
 /**
  * The DATABASE_CONFIG::$var to use for database session handling.
  *

@@ -19,7 +19,17 @@
 		<li style="float: right;"><?=$html->link('Go to Calendar','/');?></li>
 	</ul>
 </div>
-<div id="flashMsg"><? $session->flash();?></div>
+<div id="flashMsg">
+	<?
+		if ($session->check('Message.flash')) {
+			$session->flash();
+		}
+		
+		if ($session->check('Message.auth')) {
+			$session->flash('auth');
+		}
+	?>
+</div>
 <div id="wrapper">
 
 <?=$content_for_layout;?>

@@ -2,31 +2,24 @@
 class UsersController extends AppController {
 	var $name = 'Users';
 	var $layout = 'admin';
-	var $components = array('Email');
+	var $components = array('Auth','Email');
 	
 	function beforeFilter() {
-		if ($this->action != 'admin_login' && $this->action != 'admin_logout' && $this->action != 'submit') {
-			$this->checkAdmin();
-		}
+		$this->Auth->allow(array('admin_login','admin_logout','submit'));
+		$this->Auth->loginAction = array('action'=>'admin_login');
 	}
 	
 	function admin_login(){
-		if ($this->data) {
-			$user = $this->data;
-			if ($this->User->login($user)) {
-				$this->Session->write('User',$user);
-				$this->Session->setFlash('User '.$user['User']['username'].' logged in.');
-				$this->redirect('/admin/events',null,true);
-			} else {
-				$this->Session->setFlash('The login credentials you supplied could not be recognized. Please try again.');
-			}
-		}
+		
 	}
 	
 	function admin_logout() {
-		$this->Session->delete('User');
 		$this->Session->setFlash('User logged out.');
-		$this->redirect('/admin/users/login',null,true);
+		$this->redirect($this->Auth->logout());
+	}
+	
+	function password($pass=null) {
+		$this->set('pass',$this->Auth->password($pass));
 	}
 	
 	function submit() {

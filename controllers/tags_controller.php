@@ -2,11 +2,12 @@
 class TagsController extends AppController {
 	var $name = 'Tags';
 	var $layout = 'admin';
+	var $components = array('Auth');
 	
 	function beforeFilter() {
-		if ($this->action != 'findNameByShortname') {
-			$this->checkAdmin();
-		}
+		$this->Auth->loginAction = array('controller'=>'users','action'=>'login','prefix'=>'admin');
+		$this->Auth->redirectLogin = array('action'=>'index','prefix'=>'admin');
+		$this->Auth->allow(array('findNameByShortname'));
 	}
 	
 	function admin_index() {

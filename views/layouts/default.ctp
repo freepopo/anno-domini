@@ -7,7 +7,19 @@
 	<title><?=Configure::read('Calendar.name');?></title>
 </head>
 <body onLoad="new Effect.Fade('flashMessage',{delay: 3});">
-<div id="flashMsg"><? $session->flash();?></div>
-<?=$content_for_layout;?>
+<div id="flashMsg">
+	<?
+		if ($session->check('Message.flash')) {
+			$session->flash();
+		}
+		
+		if ($session->check('Message.auth')) {
+			$session->flash('auth');
+		}
+	?>
+</div>
+	
+	<?=$content_for_layout;?>
+
 </body>
 </html>

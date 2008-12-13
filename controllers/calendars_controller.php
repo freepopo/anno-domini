@@ -1,13 +1,13 @@
 <?
 class CalendarsController extends AppController {
 	var $name = 'Calendars';
-	var $components = array('Domini');
 	var $layout = 'admin';
+	var $components = array('Auth');
 	
 	function beforeFilter() {
-		if ($this->action != 'findNameByShortname' && $this->action != 'findCalendars') {
-			$this->checkAdmin();
-		}
+		$this->Auth->loginAction = array('controller'=>'users','action'=>'login','prefix'=>'admin');
+		$this->Auth->redirectLogin = array('action'=>'index','prefix'=>'admin');
+		$this->Auth->allow(array('findNameByShortname','findCalendars'));
 	}
 	
 	function admin_index() {
