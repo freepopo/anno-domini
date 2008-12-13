@@ -1,0 +1,284 @@
+/****** BEGIN CSS RESET FOR CROSS-BROWSER COMPATIBILITY ******/
+* { margin: 0; padding: 0; }
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: "Lucida Grande Regular","Lucida Grande",Lucida,sans-serif;
+	vertical-align: baseline;
+}
+/* remember to define focus styles! */
+:focus {
+	outline: 0;
+}
+body {
+	line-height: 1;
+	color: black;
+	background-color: #fff;
+}
+ol, ul {
+	list-style: none;
+}
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+}
+caption, th, td {
+	text-align: left;
+	font-weight: normal;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: "";
+}
+blockquote, q {
+	quotes: "" "";
+}
+
+/******* END RESET STYLES *******/
+
+h1 {
+	font-size: 1.4em;
+	font-weight: bold;
+	color: #33466d;
+	margin: 15px 0 5px 0;
+}
+
+h2 {
+	font-size: 1.1em;
+	font-weight: 100;
+	color: #44567d;
+	margin: 5px 10px;
+}
+
+a:visited,a:active,a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.message { 
+    width: 100%; 
+    font-size: 14px; 
+    border-bottom: solid 1px #c9b484; 
+    border-top: 0px; 
+    padding: 12px 0 12px 0; 
+    color: #000; 
+    background-color: #fff9d9; 
+    text-align: center; 
+} 
+
+.highlight {
+	color: #f27049;
+}
+
+#flashMsg {
+	position: absolute;
+	top: 0px;
+	left: 0;
+	z-index: 10;
+	width: 100%;
+}
+
+
+._header {
+	margin: 15px;
+}
+
+._header p {
+	font-size: 0.7em;
+}
+
+._calendar {
+	margin: 10px;
+	padding: 10px;
+	float: left;
+}
+
+._calendar table {
+	width: 700px;
+	border-top: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+}
+
+._calendar table th {
+	border: 1px solid #ccc;
+	border-width: 0 1px 1px 0;
+	text-align: center;
+	font-weight: bold;
+	background-color: #eee;
+	font-size: 0.7em;
+	padding: 5px;
+}
+
+._calendar table td {
+	width: 14%;
+	font-size: 0.8em;
+	border-bottom: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	height: 50px;
+	padding: 5px;
+	vertical-align: top;
+}
+
+._calendar table td b {
+	color: #333;
+	font-size: 11px;
+}
+
+._calendar ul {
+	border-top: 1px dotted #ccc;
+	margin-top: 2px;
+}
+
+._calendar ul li {
+	font-size: 0.8em;
+	border: 1px dotted #ccc;
+	border-width: 0px 0 1px 0;
+	padding: 5px 2px 5px 2px;
+}
+
+._calendar ul li:hover {
+	background-color: #fff9d9;
+	color: #897444;
+}
+
+._calendar ul li.toggle {
+	text-align: right;
+}
+
+._details {
+	float: left;
+	width: 200px;
+}
+
+._details div {
+	border: 1px solid #ccc;
+	background-color: #eee;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+._details div h3 {
+	font-family: "Arial",Arial,sans-serif;
+	font-size: 0.9em;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-align: center;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 5px;
+}
+
+._details div h4 {
+	font-size: 0.8em;
+	line-height: 1.2em;
+}
+
+._details div p {
+	font-size: 0.8em;
+	line-height: 1.1em;
+	margin: 1.0em;
+}
+
+._details p small {
+	font-size: 0.7em;
+	text-align: right;
+}
+
+/*** MENU CSS ***/
+._menu {
+	width:100%; 
+	height:auto; 
+	font-size:0.85em; 
+	position:relative; 
+	z-index:100;
+	border-right: 1px solid #ccc;
+	font-weight: bold;
+}
+/* remove all the bullets, borders and padding from the default list styling */
+._menu ul {
+	padding:0;
+	margin:0;
+	list-style-type:none;
+}
+
+/* float the list to make it horizontal and a relative positon so that you can control the dropdown menu positon */
+._menu li {
+	float:left;
+	//width:149px;
+	position:relative;
+	margin-right: 2px;
+}
+/* style the links for the top level */
+._menu a, ._menu a:visited {
+	display:block;
+	font-size:11px;
+	text-decoration:none; 
+	color:#33466d; 
+	//width:138px; 
+	height:auto; 
+	border: 1px solid #ccc;
+	border-width: 0px 1px 1px 0px; 
+	background:#eee; 
+	padding-left: 5px; 
+	padding-right: 5px;
+	line-height: 25px;
+}
+
+/* hide the sub levels and give them a positon absolute so that they take up no room */
+._menu ul ul {
+	visibility:hidden;
+	position:absolute;
+	height:0;
+	top:25px;
+	left:0;
+	//width:149px;
+	border-top:1px solid #ccc;
+}
+
+
+/* style the table so that it takes no ppart in the layout - required for IE to work */
+._menu table {
+	position:absolute;
+	top:0;
+	left:0;
+	border-collapse:collapse;
+}
+
+/* style the second level links */
+._menu ul ul a, ._menu ul ul a:visited {
+	background:#eee;
+	color:#33466d;
+	height:auto;
+	line-height:1em;
+	padding:5px 5px;
+	width:128px;
+	border-width:0 1px 1px 1px;
+}
+
+/* style the top level hover */
+._menu a:hover, ._menu ul ul a:hover{
+	color:#919eac;
+}
+
+._menu :hover > a, ._menu ul ul :hover > a {
+	color:#919eac;
+}
+
+/* make the second level visible when hover on first level list OR link */
+._menu ul li:hover ul,._menu ul a:hover ul{
+	visibility:visible;
+}

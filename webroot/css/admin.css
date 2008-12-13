@@ -1,0 +1,392 @@
+/****** BEGIN CSS RESET FOR CROSS-BROWSER COMPATIBILITY ******/
+* { margin: 0; padding: 0; }
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: "Lucida Grande Regular","Lucida Grande",Lucida,sans-serif;
+	vertical-align: baseline;
+}
+/* remember to define focus styles! */
+:focus {
+	outline: 0;
+}
+body {
+	line-height: 1;
+	color: black;
+	background-color: #fff;
+}
+ol, ul {
+	list-style: none;
+}
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+}
+caption, th, td {
+	text-align: left;
+	font-weight: normal;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: "";
+}
+blockquote, q {
+	quotes: "" "";
+}
+
+/******* END RESET STYLES *******/
+
+/************* TOP SITE BAR **************/
+
+#tophead {
+	height: 10px;
+	background-color: #333;
+	padding: 10px;
+	border-bottom: 1px solid #000;
+}
+
+#tophead h5 {
+	color: #eee;
+	font-size: 11px;
+	text-shadow: #000 0px 1px 1px;
+	font-weight: bold;
+	float: left;
+}
+
+#tophead h5.right {
+	float: right;
+}
+
+#tophead a, #footer a {
+	color: #0191f2;
+	text-decoration: none;
+}
+
+#tophead a:hover, $footer a:hover {
+	color: #37b0ff;
+}
+
+
+/************* TOP MENU BAR **************/
+
+#menubar {
+	height: 20px;
+	background-color: #e0e2f3;
+	border-bottom: 1px solid #ccc;
+	padding: 10px;
+}
+
+#menubar ul li{
+	float: left;
+	font-size: 14px;
+	line-height: 20px;
+	margin-right: 20px;
+}
+
+#menubar a, #wrapper a {
+	color: #0075cf;
+	text-decoration: none;
+}
+
+#menubar a:hover, #wrapper a:hover {
+	color: #555;
+}
+
+
+/************* MAIN CONTENT AREA - WRAPPER **************/
+
+#wrapper {
+	margin: 0 auto;
+	width: 880px;
+	background-color: #f6f6f6;
+	min-height: 600px;
+	border-right: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+	padding: 20px 10px 20px 10px;
+}
+
+#wrapper table {
+	border-right: 1px solid #ccc;
+}
+
+#wrapper table tr th {
+	color: #333;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 10px;
+	text-decoration: underline;
+	border-bottom: 1px solid #ccc;
+	background-color: #ccc;
+	border-right: 0px;
+}
+
+#wrapper table tr th a {
+	color: #333;
+}
+
+#wrapper table tr td {
+	padding: 5px;
+	font-size: 11px;
+	border-bottom: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	background-color: white;
+}
+
+#wrapper table tr.odd td {
+	background-color: #eee;
+}
+
+#wrapper table tr:hover td{
+	background-color: #fff9d9;
+}
+
+#wrapper h1 {
+	font-size: 24px;
+	font-weight: normal;
+	color: #333;
+	margin-bottom: 15px;
+}
+
+#wrapper h2 {
+	color: #444;
+	margin-bottom: 15px;
+}
+
+#wrapper p {
+	font-size: 14px;
+	margin-bottom: 14px;
+	color: #333;
+}
+
+#wrapper #menu {
+	width: 900px;
+	height: 30px;
+	background-color: #e0e2f3;
+	margin: 5px 0 10px -10px;
+	border-right: 1px solid #ddd;
+	border-bottom: 1px solid #ccc;
+	color: #eee;
+}
+
+#wrapper #menu ul {
+	margin-left: 10px;
+}
+
+#wrapper #menu ul li {
+	float: left;
+	font-size: 14px;
+	margin-right: 20px;
+	line-height: 30px;
+}
+
+#wrapper #menu a {
+	color: #0075cf;
+	text-decoration: none;
+}
+
+#wrapper #menu a:hover {
+	color: #555;
+}
+
+#pagination {
+	font-size: 12px;
+}
+
+#wrapper hr {
+	border: 0;
+	border-top: 1px solid #ccc;
+}
+
+#wrapper label {
+	font-size: 12px;
+	vertical-align: top;
+	font-weight: bold;
+	color: #333;
+}
+
+#wrapper .info {
+	font-size: 11px;
+	padding: 5px;
+	float: right;
+	color: #555;
+}
+
+#wrapper .dashboard p {
+	line-height: 14px;
+	font-size: 11px;
+	text-align: left;
+}
+
+
+
+/************* FOOTER **************/
+
+#footer {
+	margin: 0 auto;
+	width: 900px;
+	background-color: #333;
+	border-top: 7px solid #222;
+	border-right: 1px solid #333;
+	border-left: 1px solid #333;
+	min-height: 250px;
+	padding: 10px 0 10px 0;
+	color: #eee;
+}
+
+#footer .left {
+	width: 428px;
+	border-right: 1px dotted #888;
+	float: left;
+	height: 100%;
+	margin: 10px;
+}
+
+#footer .right {
+	width: 428px;
+	padding: 10px;
+	float: right;
+}
+
+#footer h1 {
+	font-size: 24px;
+	margin-bottom: 10px;
+}
+
+#footer p {
+	font-size: 12px;
+	margin-bottom: 12px;
+}
+
+#footer hr {
+	border: 0;
+	border-top: 1px solid #555;
+}
+
+/************* MISC CLASSES **************/
+
+ul.checkboxMultiple {
+	margin:0;
+	padding:0;
+	line-height: 14px;
+	overflow: auto;
+	list-style-type:none;
+	font-size: 12px;
+} 
+ 
+ul.checkboxMultiple li { 
+    display:block; 
+    margin: 0 8px 0 0; 
+} 
+
+.dashboard {
+	width: 200px;
+	height: 200px;
+	float: left;
+	margin: 10px;
+	padding: 20px;
+	border: 1px solid #ccc;
+	text-align: center;
+}
+
+.dashboard:hover {
+	background-color: #e0e2f3;
+	border: 1px solid #aaa;
+}
+
+.message { 
+    width: 100%; 
+    font-size: 14px; 
+    border-bottom: solid 1px #c9b484; 
+    border-top: 0px; 
+    padding: 12px 0 12px 0; 
+    color: #000; 
+    background-color: #fff9d9; 
+    text-align: center; 
+} 
+
+.highlight {
+	color: #f27049;
+}
+
+#flashMsg {
+	position: absolute;
+	top: 72px;
+	left: 0;
+	z-index: 10;
+	width: 100%;
+}
+
+.paging {
+	font-size: 0.8em;
+}
+
+.msg {
+	margin-right: 10px;
+	padding: 5px;
+}
+
+.odd {
+	background-color: #444;
+}
+
+.msg .odd:hover {
+	background-color: #45433b;
+}
+
+.optional {
+	margin: 10px 0 10px 0;
+}
+
+.optional input[type=text], .optional input[type=password] {
+	font-size: 1.0em;
+}
+
+#wrapper a.btn, #wrapper a.btn:visited {
+    background: transparent url('../img/bg_button_a.gif') no-repeat scroll top right;
+    color: #444;
+    display: block;
+    float: left;
+    font: normal 12px arial, sans-serif;
+    height: 24px;
+    margin-right: 6px;
+    padding-right: 18px; /* sliding doors padding */
+    text-decoration: none;
+}
+
+#wrapper a.btn span {
+    background: transparent url('../img/bg_button_span.gif') no-repeat;
+    display: block;
+    line-height: 14px;
+    padding: 5px 0 5px 18px;
+}
+
+#wrapper a.btn:active {
+    background-position: bottom right;
+    color: #000;
+    outline: none; /* hide dotted outline in Firefox */
+}
+
+#wrapper a.btn:active span {
+    background-position: bottom left;
+    padding: 6px 0 4px 18px; /* push text down 1px */
+}
+
+#wrapper a.btn:hover {
+	text-decoration: none;
+	border: 0;
+	color: #444;
+}

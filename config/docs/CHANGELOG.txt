@@ -1,0 +1,15 @@
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+// +---------------------------------------------------------------------------------------------------+//
+// + $Id: README.txt 01 2008-01-25 davidgolding $
+// +---------------------------------------------------------------------------------------------------+//
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	1. Compatible with CakePHP 1.2 beta
+	2. Improved back-end layout and design
+	3. TONS of code trimmed for faster queries and page rendering
+	4. Location field added
+	5. Untimed events added
+	6. Menu system built on CSS, not on Javascript
+	7. Improved User management for adding, editing, and deleting multiple admin users
+	8. Improved URL handling and better URL routes
+	9. Improved front-end design, but still minimalist to make editing the design easy
