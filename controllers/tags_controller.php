@@ -1,20 +1,54 @@
 <?
+/**
+ * Controller functions for handling Tags
+ *
+ */
 class TagsController extends AppController {
+	
+/**
+ * Controller name for backwards compatibility in PHP 4
+ *
+ * @var string $name Name of table & controller
+ */
 	var $name = 'Tags';
+	
+/**
+ * Default layout used by this controller
+ *
+ * @var $layout	The filename (without extension) of the views/layouts file
+ */
 	var $layout = 'admin';
+	
+/**
+ * Components used by this controller
+ *
+ * @var array $components Components to be included
+ */
 	var $components = array('Auth');
 	
+/**
+ * Any logic to be run before the controller function calls
+ *
+ */
 	function beforeFilter() {
 		$this->Auth->loginAction = array('controller'=>'users','action'=>'login','prefix'=>'admin');
 		$this->Auth->redirectLogin = array('action'=>'index','prefix'=>'admin');
 		$this->Auth->allow(array('findNameByShortname'));
 	}
 	
+/**
+ * Lists all Tags records
+ *
+ */
 	function admin_index() {
 		$this->Tag->recursive = 0;
 		$this->set('tags',$this->paginate());
 	}
-	
+
+/**
+ * Adds a tag record to the database
+ *
+ */
 	function admin_add() {
 		if (!empty($this->data)) {
 			$this->cleanUpFields();
@@ -30,6 +64,11 @@ class TagsController extends AppController {
 		$this->set(compact('calendars'));
 	}
 	
+/**
+ * Edits a given tag record
+ *
+ * @param int $id	The ID of the tag record to edit
+ */
 	function admin_edit($id=null) {
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash('Invalid Tag to edit');
@@ -51,6 +90,11 @@ class TagsController extends AppController {
 		$this->set(compact('calendars'));
 	}
 	
+/**
+ * Deletes a given tag record
+ *
+ * @param int $id The ID of the tag record to delete
+ */
 	function admin_delete($id=null) {
 		if (!$id) {
 			$this->Session->setFlash('Invalid ID for Tag.');
@@ -62,6 +106,12 @@ class TagsController extends AppController {
 		}
 	}
 	
+/**
+ * Returns the name of a tag record for a given shortname
+ *
+ * @param string $shortname	The shortname to look up
+ * @return The matching tag's name
+ */
 	function findNameByShortname($shortname=null) {
 		$tag = $this->Tag->find(array('shortname'=>$shortname),array('name'));
 		return $tag['Tag']['name'];

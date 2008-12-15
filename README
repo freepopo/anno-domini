@@ -1,0 +1,88 @@
+Welcome to Anno Domini 2.1!
+
+I'm excited to release this improved calendar program. Here are some improvements in this version:
+
+	1. Compatible with CakePHP 1.2 RC3
+	2. Improved back-end layout and design
+	3. TONS of code trimmed for faster queries and page rendering
+	4. Location field added
+	5. Untimed events added
+	6. Menu system built on CSS, not on Javascript
+	7. Improved User management for adding, editing, and deleting multiple admin users
+	8. Improved URL handling and better URL routes
+	9. Improved front-end design, but still minimalist to make editing the design easy
+	10. User login/logout handled with Auth component, improved security of hashed passwords
+
+------INSTALLATION NOTES------
+
+1. Set up the MySQL database
+	
+	-	To do this, just open the anno-domini > config > sql > annodomini_mysql_setup.sql file using PHPMyAdmin or any other MySQL database application. It will automatically create the tables for Anno Domini to work immediately.
+	
+	-	Edit the annodomini > app > config > database.php file to reflect your MySQL connection settings.
+	
+2. Install the anno-domini folder on your server
+	
+	-	Just place the folder in the root folder on your server.
+	
+	-	Make sure Cake 1.2 RC3 or later is installed. Take note of the include path to the Cake libraries.
+	
+	-	Open anno-domini > webroot > index.php and change lines 44, 51, and 58 to reflect your server setup.
+		*	ROOT should be set to the name of the folder holding the anno-domini directory.
+		*	APP_DIR should be set to 'anno-domini' if you have renamed the install folder.
+		*	CAKE_CORE_INCLUDE_PATH must be set to the server path of your Cake core libraries, but not including a trailing slash or the "cake" directory name
+	
+3. Launch the application!
+	
+	-	Pull up the anno-domini directory in your web browser (e.g., http://domain.com/anno-domini/)
+	
+	-	The calendar should be up and running. If you experience problems, check out www.cakephp.org for information on how to get Cake working correctly.
+	
+	-	Go to http://domain.com/anno-domini/admin to create events. The default username and password is "admin" and "admin". You can change these by going to the "Users" area of the administration panel.
+	
+------OPTIONAL SETTINGS------
+	
+	Anno Domini houses its global variables in the annodomini > app > config > core.php file. You will find these at the very bottom of the file under the comment:
+	
+	/**
+	 * Anno Domini Calendar Settings
+	 *
+	 */
+	 
+	 -	Calendar.name is the global name of the calendar. This will be used in email submissions and the <title> tags in the layouts.
+	 
+	 -	Calendar.admin_email is the email address where you want calendar submissions to be sent.
+	 
+	 -	Calendar.max_items is the number of events you want displayed for a single day before a "more..." link appears. This helps keep your calendar from getting too crowded visually.
+	 
+------IMPORTANT URLS------
+	
+	Some areas of the program aren't accessible inside the application by clicking links, but they are accessible by entering direct URLs:
+	
+	- Event submissions: /anno-domini/submit
+	- Administration panel: /anno-domini/admin
+	
+------COLLABORATION, HELPS------
+
+	Please consider contributing to this project. Some enhancements that could improve the application include:
+	
+	-	Recurring events management
+	-	ACL management of calendar administration
+	-	UI improvements! (Always a concern/goal)
+	-	jQuery instead of Prototype integration (especially in jQuery someday replaces Prototype in the Cake core!)
+	-	Improved security of form submissions
+	-	Improved email management to allow for user requests, etc.
+	-	Exporting to iCal/Google Calendar/other calendar formats
+	-	Mass events editing
+	
+	Official support is handled in two forums:
+	
+	*	CakeForge	http://www.cakeforge.org/projects/anno-domini
+	*	Forum		http://www.davidgolding.net/forum
+	
+	Please check the CakeForge page for status updates, new releases, etc.
+	
+	
+	
+	
+	

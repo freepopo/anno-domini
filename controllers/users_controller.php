@@ -1,27 +1,71 @@
 <?
+/**
+ * Manages User records and access
+ *
+ */
 class UsersController extends AppController {
+	
+/**
+ * Controller name for backwards compatibility in PHP 4
+ *
+ * @var string $name Name of table & controller
+ */
 	var $name = 'Users';
+	
+/**
+ * Default layout used by this controller
+ *
+ * @var $layout	The filename (without extension) of the views/layouts file
+ */
 	var $layout = 'admin';
+	
+/**
+ * Components used by this controller
+ *
+ * @var array $components Components to be included
+ */
 	var $components = array('Auth','Email');
 	
+/**
+ * Any logic to be run before the controller function calls
+ *
+ */
 	function beforeFilter() {
 		$this->Auth->allow(array('admin_login','admin_logout','submit'));
 		$this->Auth->loginAction = array('action'=>'admin_login');
 	}
 	
+/**
+ * Handles user log in
+ *
+ */
 	function admin_login(){
 		
 	}
 	
+/**
+ * Logs out the user
+ *
+ */
 	function admin_logout() {
 		$this->Session->setFlash('User logged out.');
 		$this->redirect($this->Auth->logout());
 	}
 	
+/**
+ * Returns the password hash for a given password; for admin purposes
+ *
+ * @param string $pass	The password to hash
+ * @return Hashed equivalent of $pass
+ */
 	function password($pass=null) {
 		$this->set('pass',$this->Auth->password($pass));
 	}
 	
+/**
+ * Sends email request to calendar's administrator to include an event
+ *
+ */
 	function submit() {
 		$this->layout = 'default';
 		if (!empty($this->data)) {
@@ -44,11 +88,19 @@ class UsersController extends AppController {
 		}
 	}
 	
+/**
+ * Lists all users
+ *
+ */
 	function admin_index() {
 		$this->User->recursive = 0;
 		$this->set('users',$this->paginate());
 	}
 	
+/**
+ * Adds a user to the db
+ *
+ */
 	function admin_add() {
 		if (!empty($this->data)) {
 			$this->User->create();
@@ -61,6 +113,11 @@ class UsersController extends AppController {
 		}
 	}
 	
+/**
+ * Edits a given user record
+ *
+ * @param int $id	The ID of the user record to edit
+ */
 	function admin_edit($id=null) {
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash('Invalid User to edit.');
@@ -79,6 +136,11 @@ class UsersController extends AppController {
 		}
 	}
 	
+/**
+ * Deletes a given user record
+ *
+ * @param int $id	The ID of the user record to delete
+ */
 	function admin_delete($id=null) {
 		if (!$id) {
 			$this->Session->setFlash('Invalid ID for User.');

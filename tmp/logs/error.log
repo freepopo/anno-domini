@@ -1,0 +1,4 @@
+2008-12-12 22:34:44 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1046: No database selected</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 514]
+2008-12-12 22:34:44 Warning: Warning (2): session_start() [<a href='http://php.net/function.session-start'>function.session-start</a>]: Cannot send session cookie - headers already sent by (output started at /usr/lib/cake/basics.php:111) in [CORE/cake/libs/session.php, line 547]
+2008-12-12 22:34:44 Warning: Warning (2): session_start() [<a href='http://php.net/function.session-start'>function.session-start</a>]: Cannot send session cache limiter - headers already sent (output started at /usr/lib/cake/basics.php:111) in [CORE/cake/libs/session.php, line 547]
+2008-12-12 22:34:44 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at /usr/lib/cake/basics.php:111) in [CORE/cake/libs/session.php, line 548]

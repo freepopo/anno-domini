@@ -1,8 +1,28 @@
-<?php
+<?
+/**
+ * Controller functions for handling the events table and elements
+ *
+ */
 class EventsController extends AppController {
+	
+/**
+ * Controller name for backwards compatibility in PHP 4
+ *
+ * @var string $name Name of table & controller
+ */
 	var $name = 'Events';
+	
+/**
+ * Components used by this controller
+ *
+ * @var array $components Components to be included
+ */
 	var $components = array('Auth');
 	
+/**
+ * Any logic to be run before the controller function calls
+ *
+ */
 	function beforeFilter() {
 		$this->Auth->loginAction = array('controller'=>'users','action'=>'login','prefix'=>'admin');
 		$this->Auth->redirectLogin = array('controller'=>'events','action'=>'index','prefix'=>'admin');
@@ -12,6 +32,13 @@ class EventsController extends AppController {
 		}
 	}
 	
+/**
+ * Renders a calendar based on given calendar/tag shortnames and/or a given month-year
+ *
+ * @param string $calendar	The calendar shortname to render; parsed and sorted if other than calendar shortname
+ * @param string $tag	The tag shortname to render; parsed and sorted if other than tag shortname
+ * @param string $date	The month and year to lookup, formatted as m-yyyy or mm-yyyy
+ */
 	function view($calendar=null,$tag=null,$date=null) {
 		$data = $this->parseUrl($calendar,$tag,$date);
 		$prev = $this->findPrev($this->params['pass']);
@@ -22,11 +49,19 @@ class EventsController extends AppController {
 		$this->set(compact('events','prev','next','data'));
 	}
 	
+/**
+ * Lists all Events records
+ *
+ */
 	function admin_index() {
 		$this->Event->recursive = 0;
 		$this->set('events',$this->paginate());
 	}
 	
+/**
+ * Adds an event record to the db
+ *
+ */
 	function admin_add() {
 		if (!empty($this->data)) {
 			$this->Event->create();
@@ -41,6 +76,11 @@ class EventsController extends AppController {
 		$this->set(compact('tags'));
 	}
 	
+/**
+ * Edits a given event record
+ *
+ * @param int $id	The ID of the event record to edit
+ */
 	function admin_edit($id=null) {
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash('Invalid Event to edit');
@@ -61,6 +101,11 @@ class EventsController extends AppController {
 		$this->set(compact('tags'));
 	}
 	
+/**
+ * Deletes a given even record
+ *
+ * @param int $id	The ID of the event record to delete
+ */
 	function admin_delete($id=null) {
 		if (!$id) {
 			$this->Session->setFlash('Invalid ID for Event.');

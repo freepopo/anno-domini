@@ -1,8 +1,27 @@
 <?
+/**
+ * Calendar helper
+ *		manages view logic for calendar-specific methods
+ *
+ */
 class CalendarHelper extends Helper {
 	
+/**
+ * Other helpers used by this class
+ *
+ * @var array $helpers	Names of included core helper classes
+ */
 	var $helpers = array('Html','Ajax');
 	
+/**
+ * Returns formatted event links for a diven date
+ *
+ * @param int $month	The month being rendered
+ * @param int $day	The day being rendered
+ * @param int $year	The year being rendered
+ * @param array $events	A preformatted events array, usually provided by the Event model's find methods
+ * @return List of matching events in the DB for the given day-month-year with formatted links for displaying event details
+ */
 	function events($month=null,$day=null,$year=null,$events=array()) {
 		$entry = array();
 		$i = 0;
@@ -17,10 +36,10 @@ class CalendarHelper extends Helper {
 		} else {
 			foreach ($events as $event) {
 				$date = strtotime($event['Event']['date']);
-				$dday = date("d",$date); 
-				$mmonth = date("m",$date);
-				$yyear = date("Y", $date);
-				if ($dday == $day && $mmonth == $month && $yyear == $year) {
+				$_day = date("d",$date); 
+				$_month = date("m",$date);
+				$_year = date("Y", $date);
+				if ($_day == $day && $_month == $month && $_year == $year) {
 					$entry[$i]['headline'] = $event['Event']['headline'];
 					$entry[$i]['id'] = $event['Event']['id'];
 				}
@@ -50,6 +69,14 @@ class CalendarHelper extends Helper {
 		}
 	}
 	
+/**
+ * Returns the table cell's day as a digit, modified if it matches today's date
+ *
+ * @param int $day	The day in the table cell cycle
+ * @param int $month	The current month for the whole table
+ * @param int $year	The current year for the whole table
+ * @return	A digit representing the cell's day, given a class="today" if matching today's date
+ */
 	function today($day=null,$month=null,$year=null) {
 		if ($day == date('j') && $month == date('m') && $year == date('Y')) {
 			$output = '<b class="today">'.$day.'</b>';
@@ -59,6 +86,14 @@ class CalendarHelper extends Helper {
 		return $this->output($output);
 	}
 	
+/**
+ * Renders a button to replace default browser UI buttons/submit inputs
+ *
+ * @param string $text	The text of the button
+ * @param array $options	Options for calling form submissions or to be used as a link
+ * @param string $type	If set to effect, will display a <div> element based on a given ID ($options['id'] must be set)
+ * @return A formatted button
+ */
 	function button($text=null,$options=array(),$type='default'){
 	$output = null;
 	$link = null;

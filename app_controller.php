@@ -1,15 +1,33 @@
 <?
+/**
+ * Anno Domini
+ * App Controller
+ * This file contains application-wide controller functions.
+ *
+ * PHP versions 4 and 5
+ * @copyright	David Golding
+ * @version		2.1 revision 4
+ * @license		http://www.opensource.org/licenses/mit-license.php The MIT License
+ *
+ */
 class AppController extends Controller {
 	
+/**
+ * Helpers to be included in all controllers
+ *
+ * @var array $helpers Application helpers to be used application-wide
+ */
 	var $helpers = array('Ajax','Form','Html','Javascript','Calendar');
-	
-	function checkAdmin() {
-		if (!$this->Session->check('User')) {
-			$this->Session->setFlash('You must be logged in first.');
-			$this->redirect(array('controller'=>'users','action'=>'admin_login'));
-		}
-	}
-	
+
+/**
+ * Parses supplied URL string for detecting calendar/tag/date combinations.
+ *
+ * @param string $calendar First chunk in the URL string, which is usually the calendar's shortname
+ * @param string $tag Second chunk in the URL string, usually the tag's shortname
+ * @param string $date Last chunk, usually the date, formatted as m-yyyy or mm-yyyy
+ * @return array $output Parsed elements of URL string matched and keyed to their respective types
+ */
+
 	function parseUrl($calendar=null,$tag=null,$date=null) {
 		if (!$tag && !$calendar) { // URL = calendars/view
 			$month = date('n');
@@ -18,7 +36,7 @@ class AppController extends Controller {
 			$calendar = 'all';
 		} 
 		
-		if ($calendar && !$tag) { // URL ~ calendars/view/teclab OR calendars/view/1-2008
+		if ($calendar && !$tag) { // URL ~ calendars/view/calendar OR calendars/view/1-2008
 			$calendar = explode("-",$calendar);
 			if (array_key_exists(1,$calendar)) {		//check to see if a month-year was passed or a calendar shortname
 				$month = $calendar[0];
@@ -31,7 +49,7 @@ class AppController extends Controller {
 				$tag = 'all';
 				$calendar = $calendar[0];
 			}
-		} else {				// URL ~ calendars/view/teclab/livetext OR calendars/view/teclab/1-2008
+		} else {				// URL ~ calendars/view/calendar/tag OR calendars/view/calendar/1-2008
 			$tag = explode("-",$tag);
 			if (array_key_exists(1,$tag)) { // check for month-year in $tag or tag shortname
 				$month = $tag[0];
@@ -56,6 +74,12 @@ class AppController extends Controller {
 		return $output;
 	}
 	
+/**
+ * Returns the Prev link settings for the previous month in the calendar
+ *
+ * @param array $pass Calendar shortname, Tag shortname, or Date
+ * @return string $url Path string to previous month in the current calendar
+ */
 	function findPrev($pass=array()) {
 		$output = array();
 		$today = true;
@@ -86,6 +110,12 @@ class AppController extends Controller {
 		return $url;
 	}
 	
+/**
+ * Returns the Next link settings for the next month in the calendar
+ *
+ * @param array $pass Calendar shortname, Tag shortname, or Date
+ * @return string $url Path string to next month in the current calendar
+ */
 	function findNext($pass=array()) {
 		$output = array();
 		$today = true;

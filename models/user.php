@@ -1,18 +1,15 @@
 <?
+/**
+ * User model
+ *
+ */
 class User extends AppModel {
+
+/**
+ * Name of the model for backwards compatibility in PHP 4
+ *
+ * @var string $name	The name of the model
+ */
 	var $name = 'User';
-	
-	function login($user=array()) {
-		if (!$user) {
-			return false;
-		} else {
-			$record = $this->findByUsername($user['User']['username']);
-			if (!$record || $record['User']['password'] != $user['User']['password']) {
-				return false;
-			} else {
-				return true;
-			}
-		}
-	}
 }
 ?>
